@@ -1,0 +1,30 @@
+{
+  "name": "spartial",
+  "version": "0.1.0",
+  "description": "Sparse partial function application",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0x59/spartial.git"
+  },
+  "keywords": [
+    "sparse",
+    "partial",
+    "function",
+    "application",
+    "es5"
+  ],
+  "author": "0x59 <0x59.sw@gmail.com> (https://github.com/0x59)",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/0x59/spartial/issues"
+  },
+  "homepage": "https://github.com/0x59/spartial#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1"
+  }
+}
