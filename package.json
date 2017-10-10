@@ -1,11 +1,11 @@
 {
   "name": "spartial",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Sparse partial function application",
   "main": "index.js",
   "scripts": {
     "test": "mocha --reporter spec",
-	"cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec test/*"
+    "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec test/*"
   },
   "repository": {
     "type": "git",
