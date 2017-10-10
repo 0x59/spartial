@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/0x59/spartial.svg?branch=master)](https://travis-ci.org/0x59/spartial)  [![Coverage Status](https://coveralls.io/repos/github/0x59/spartial/badge.svg?branch=master)](https://coveralls.io/github/0x59/spartial?branch=master)
+
 # spartial
 
 > Sparse partial function application - aka, spartial application
