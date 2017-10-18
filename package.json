@@ -1,6 +1,6 @@
 {
   "name": "spartial",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Sparse partial function application",
   "main": "index.js",
   "scripts": {
