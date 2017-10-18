@@ -7,16 +7,7 @@
 
 ## Why?
 
-Good question.
-
-As with solving most problems, there are many ways to arrive at a solution, and one need not pick a solution here.  ES6 brings greater expressiveness, enabling more concise partial application. As for ES5 ...
-
-### Performance considerations and ES5
-
-Regarding partial fn application, extra work may be involved during the initial application and during the later execution.  Execution is a more relevant concern given the fn will likely be executed multiple times.
-
-#### Stats 
-
+Good question ... more on that later.
 
 ## Install
 
