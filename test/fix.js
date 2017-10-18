@@ -7,8 +7,7 @@ const
 	spartial = require('../'),
 	fix = spartial.fix
 
-describe('fix', function() {
-
+describe('spartial#fix', function() {
 	it('should only require the first argument (a function)', function() {
 		function fn() { return this }
 
@@ -61,5 +60,17 @@ describe('fix', function() {
 			p = fix(fn, ctx, args)
 
 		assert.deepEqual(p(), args, 'applied arguments are not in array order')
+	})
+
+	it('should be able to execute the partial function multiple times', function() {
+		function fn() { return Array.prototype.slice.call(arguments) }
+
+		var	ctx = {},
+			args = [ 't1' ],
+			finalArgs = [ 't1', 't2', 't3', 't4', 't5' ],
+			p = fix(fn, ctx, args)
+
+		assert.deepEqual(p('t2', 't3', 't4', 't5'), finalArgs, 'applied arguments were not seen first')
+		assert.deepEqual(p('t2', 't3', 't4', 't5'), finalArgs, 'was not able to execute function multiple times')
 	})
 })

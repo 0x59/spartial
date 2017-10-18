@@ -2,22 +2,23 @@
 
 module.exports = {
 
-	fix: function fix( fn, ctx, fixedArgs_ ) {
+	fix: function ( fn, ctx, fixedArgs_ ) {
 		var	fixedArgs = fixedArgs_ || [],
-			i = 0,
 			I = fixedArgs.length || 0,
+			i = 0,
 			args = []
-
+		
 		for( ; i < I; ++i ) {
 			args[i] = fixedArgs[i]
 		}
 
 		return function() {
 			var	J = arguments.length,
-				j = 0
+				j = 0,
+				k = i
 
-			for( ; j < J; ++i, ++j ) {
-				args[i] = arguments[j]
+			for( ; j < J; ++k, ++j ) {
+				args[k] = arguments[j]
 			}
 
 			return fn.apply(ctx, args)
@@ -26,11 +27,11 @@ module.exports = {
 
 	fixR: function fixR( fn, ctx, fixedArgs_ ) {
 		var	fixedArgs = fixedArgs_ || [],
-			args = []
+			args = [],
+			J = fixedArgs.length || 0
 
 		return function() {
 			var	I = arguments.length,
-				J = fixedArgs.length || 0,
 				i = 0,
 				j = 0
 
@@ -46,18 +47,19 @@ module.exports = {
 		}
 	},
 
-	mix: function mix( fn, ctx, fixedArgs_ ) {
+	mix: function mix( fn, ctx, fixedArgs_, placeholder_ ) {
 		var	fixedArgs = fixedArgs_ || [],
-			mixedArgs = []
+			mixedArgs = [],
+			placeholder = placeholder_ || void 0,
+			I = fixedArgs.length
 
 		return function() {
-			var	I = fixedArgs.length,
-				J = arguments.length,
+			var	J = arguments.length,
 				i = 0,
 				j = 0
 
 			for( ; i < I; ++i ) {
-				mixedArgs[i] = fixedArgs[i] === void 0 ? arguments[j++] : fixedArgs[i]
+				mixedArgs[i] = fixedArgs[i] === placeholder ? arguments[j++] : fixedArgs[i]
 			}
 
 			for( ; j < J; ++i, ++j ) {
@@ -68,21 +70,22 @@ module.exports = {
 		}
 	},
 
-	mixR: function mixR( fn, ctx, fixedArgs_ ) {
+	mixR: function mixR( fn, ctx, fixedArgs_, placeholder_ ) {
 		var	fixedArgs = fixedArgs_ || [],
 			mixedArgs = [],
-			args = []
+			args = [],
+			placeholder = placeholder_ || void 0,
+			I = fixedArgs.length
 
 		return function() {
-			var	I = fixedArgs.length,
-				J = arguments.length,
+			var	J = arguments.length,
 				K = I,
 				i = I - 1,
 				j = J - 1,
 				k
 
 			for( ; i > -1; --i ) {
-				mixedArgs[i] = fixedArgs[i] === void 0 && j > -1 ? arguments[j--] : fixedArgs[i]
+				mixedArgs[i] = fixedArgs[i] === placeholder && j > -1 ? arguments[j--] : fixedArgs[i]
 			}
 
 			k = j + 1

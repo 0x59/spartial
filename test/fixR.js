@@ -7,7 +7,7 @@ const
 	spartial = require('../'),
 	fixR = spartial.fixR
 
-describe('fixR', function() {
+describe('spartial#fixR', function() {
 
 	it('should only require the first argument (a function)', function() {
 		function fn() { return this }

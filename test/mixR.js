@@ -7,7 +7,7 @@ const
 	spartial = require('../'),
 	mixR = spartial.mixR
 
-describe('mixR', function() {
+describe('spartial#mixR', function() {
 
 	it('should only require the first argument (a function)', function() {
 		function fn() { return this }
@@ -65,5 +65,18 @@ describe('mixR', function() {
 			expect = [ 'p1', 'p2', 't1', 'p3', 't2', 'p4', 'p5', 't3' ]
 
 		assert.deepEqual(actual, expect, 'applied arguments are not in array order')
+	})
+	
+	it('should support arbitrary placeholder references', function() {
+		function fn() { return Array.prototype.slice.call(arguments) }
+
+		var	ctx = {},
+			ph = function() {},
+			args = [ 't1', ph, 't2', ph, ph, 't3' ],
+			p = mixR(fn, ctx, args, ph),
+			actual = p('p1', 'p2', 'p3', 'p4', 'p5'),
+			expect = [ 'p1', 'p2', 't1', 'p3', 't2', 'p4', 'p5', 't3' ]
+
+		assert.deepEqual(actual, expect, 'arbitrary placeholder reference not used correctly')
 	})
 })
