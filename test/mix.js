@@ -67,7 +67,7 @@ describe('spartial#mix', function() {
 		assert.deepEqual(actual, expect, 'applied arguments are not in array order')
 	})
 	
-	it('should support arbitrary placeholder references', function() {
+	it('should support arbitrary placeholders', function() {
 		function fn() { return Array.prototype.slice.call(arguments) }
 
 		var	ctx = {},
@@ -77,6 +77,23 @@ describe('spartial#mix', function() {
 			actual = p('p1', 'p2', 'p3', 'p4', 'p5'),
 			expect = [ 't1', 'p1', 't2', 'p2', 'p3', 't3', 'p4', 'p5' ]
 
-		assert.deepEqual(actual, expect, 'arbitrary placeholder reference not used correctly')
+		assert.deepEqual(actual, expect, 'arbitrary placeholders not used correctly')
 	})
+
+	it('should support the the specified module placeholder', function() {
+		function fn() { return Array.prototype.slice.call(arguments) }
+		
+		var	ph = function() {}
+		spartial.placeholder(ph)
+
+		var	ctx = {},
+			args = [ 't1', ph, 't2', ph, ph, 't3' ],
+			p = mix(fn, ctx, args),
+			actual = p('p1', 'p2', 'p3', 'p4', 'p5'),
+			expect = [ 't1', 'p1', 't2', 'p2', 'p3', 't3', 'p4', 'p5' ]
+
+		assert.deepEqual(actual, expect, 'arbitrary module placeholder not used correctly')
+		spartial.placeholder()
+	})
+
 })

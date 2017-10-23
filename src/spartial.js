@@ -1,12 +1,18 @@
 'use strict';
 
+var _placeholder
+
 module.exports = {
 
-	fix: function ( fn, ctx, fixedArgs_ ) {
+	placeholder: function placeholder( v ) {
+		_placeholder = v
+	},
+
+	fix: function fix( fn, ctx, fixedArgs_ ) {
 		var	fixedArgs = fixedArgs_ || [],
+			args = [],
 			I = fixedArgs.length || 0,
-			i = 0,
-			args = []
+			i = 0
 		
 		for( ; i < I; ++i ) {
 			args[i] = fixedArgs[i]
@@ -50,7 +56,7 @@ module.exports = {
 	mix: function mix( fn, ctx, fixedArgs_, placeholder_ ) {
 		var	fixedArgs = fixedArgs_ || [],
 			mixedArgs = [],
-			placeholder = placeholder_ || void 0,
+			placeholder = placeholder_ || _placeholder,
 			I = fixedArgs.length
 
 		return function() {
@@ -74,7 +80,7 @@ module.exports = {
 		var	fixedArgs = fixedArgs_ || [],
 			mixedArgs = [],
 			args = [],
-			placeholder = placeholder_ || void 0,
+			placeholder = placeholder_ || _placeholder,
 			I = fixedArgs.length
 
 		return function() {
