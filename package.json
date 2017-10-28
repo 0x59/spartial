@@ -1,6 +1,6 @@
 {
   "name": "spartial",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Sparse partial function application",
   "main": "src/spartial.js",
   "scripts": {
@@ -16,7 +16,8 @@
     "partial",
     "function",
     "application",
-    "es5"
+    "es3",
+	"apply"
   ],
   "author": "0x59 <0x59.sw@gmail.com> (https://github.com/0x59)",
   "license": "UNLICENSED",
