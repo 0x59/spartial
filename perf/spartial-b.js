@@ -1,8 +1,10 @@
 'use strict';
 
-var _placeholder,
-	spartial = {
-		
+var spartial = (function() {
+	var _placeholder
+
+	return {
+
 		placeholder: function placeholder( v ) {
 			_placeholder = v
 		},
@@ -12,7 +14,7 @@ var _placeholder,
 				args = [],
 				I = fixedArgs.length || 0,
 				i = 0
-			
+
 			for( ; i < I; ++i ) {
 				args[i] = fixedArgs[i]
 			}
@@ -105,5 +107,6 @@ var _placeholder,
 				return fn.apply(ctx, args)
 			}
 		}
-	
+
 	}
+})()
